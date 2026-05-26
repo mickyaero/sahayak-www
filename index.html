@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sahayak — Cartography of Motion</title>
+  <meta name="description" content="A ground autonomous platform for India's bounded properties. Currently mapping campuses.">
+  <meta property="og:title" content="Sahayak — Cartography of Motion">
+  <meta property="og:description" content="A ground autonomous platform for India's bounded properties.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,200..700&family=Crimson+Pro:ital,wght@0,300..600;1,300..600&family=JetBrains+Mono:wght@300;400&family=Mukta:wght@200;300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="cursor-canvas" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <div class="wordmark">
+      <span class="mark" aria-hidden="true">△</span>
+      <span class="brand">SAHAYAK</span>
+    </div>
+    <nav>
+      <span class="nav-item">MMXXVI</span>
+      <span class="nav-item accent">Stealth</span>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-content reveal">
+      <div class="hero-meta">A study of motion in bounded space</div>
+      <h1 class="hero-title">
+        <span class="latin">Sahayak</span>
+        <span class="devanagari">सहायक</span>
+      </h1>
+      <p class="hero-tagline">
+        A ground autonomous platform<br>
+        for India's bounded properties.<br>
+        <span class="meta">— currently mapping campuses.</span>
+      </p>
+    </div>
+    <div class="hero-coordinates">
+      <span>12.9716°&nbsp;N</span>
+      <span class="dot">·</span>
+      <span>77.5946°&nbsp;E</span>
+      <span class="dot">·</span>
+      <span>Bangalore</span>
+    </div>
+    <div class="hero-scroll-hint">scroll&nbsp;↓</div>
+  </section>
+
+  <section class="thesis">
+    <div class="section-marker">§&nbsp;I&nbsp;—&nbsp;Thesis</div>
+    <p class="pullquote reveal">
+      <span class="quote-mark">"</span>Mess closes at <span class="num">9</span>.<br>
+      Students stay up till <span class="num">2</span>.<br>
+      The <span class="emphasis">five-hour gap</span><br>
+      is where Sahayak lives.<span class="quote-mark closing">"</span>
+    </p>
+    <aside class="margin-note reveal">
+      In India, the campus dining infrastructure stops at nine in the evening. Quick-commerce halts at the hostel gate. Sahayak fills the window humans don't — autonomously, indifferent to weather, awake when the city sleeps.
+    </aside>
+  </section>
+
+  <section class="math-interlude">
+    <canvas id="math-canvas" aria-hidden="true"></canvas>
+    <div class="math-text reveal">
+      <p class="caption">
+        Every Sahayak run is a parametric curve,<br>
+        weighted by hunger, weather, and time.
+      </p>
+      <p class="formula">r(θ)&nbsp;=&nbsp;a&nbsp;·&nbsp;cos(k&nbsp;·&nbsp;θ&nbsp;+&nbsp;φ)</p>
+    </div>
+  </section>
+
+  <section class="numbers">
+    <div class="section-marker">§&nbsp;II&nbsp;—&nbsp;By the numbers</div>
+    <div class="stat-grid">
+      <div class="stat reveal">
+        <div class="number-wrap">
+          <span class="number" data-target="97">0</span>
+          <span class="unit">%</span>
+        </div>
+        <div class="caption">student approval&nbsp;— Starship Technologies, n&nbsp;=&nbsp;5,000 across 65 US campuses.</div>
+      </div>
+      <div class="stat reveal">
+        <div class="number-wrap">
+          <span class="number" data-target="60">0</span>
+          <span class="unit">%</span>
+        </div>
+        <div class="caption">of students avoid skipping meals when delivery robots are present on campus.</div>
+      </div>
+      <div class="stat reveal">
+        <div class="number-wrap">
+          <span class="number" data-target="24">0</span>
+          <span class="unit">%</span>
+        </div>
+        <div class="caption">report feeling safer with contactless late-night delivery during study sessions.</div>
+      </div>
+      <div class="stat reveal">
+        <div class="number-wrap">
+          <span class="number" data-target="10">0</span>
+          <span class="unit">M+</span>
+        </div>
+        <div class="caption">cumulative deliveries — Starship, April&nbsp;MMXXVI. Industry trajectory exceeds 1M robots by year-end.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="colophon">
+    <div class="section-marker">§&nbsp;III&nbsp;—&nbsp;Colophon</div>
+    <div class="colophon-body reveal">
+      <p class="lede">
+        Sahayak is co-founded by<br>
+        <em>Merrylin&nbsp;Stewart</em> &amp; <em>Puneet&nbsp;Mahajan</em>.
+      </p>
+      <p class="sublede">Bangalore. Bootstrap-funded. Currently in stealth.</p>
+      <hr class="rule">
+      <p class="footnote">
+        The first robots will run between hostels and mess vendors,<br>
+        nine to two — when the gates are closed,<br>
+        and the rest of the world is asleep.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-row">
+      <span>Sahayak © MMXXVI</span>
+      <span class="footer-center">Stewart × Mahajan</span>
+      <span>Bangalore — IN</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
