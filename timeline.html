@@ -175,6 +175,24 @@
     <div class="river-end" aria-hidden="true">∞</div>
   </section>
 
+  <!-- Detail modal — populated by JS from milestoneData -->
+  <div class="modal" id="memory-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-backdrop"></div>
+    <article class="modal-content">
+      <button class="modal-close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+          <line x1="6" y1="6" x2="18" y2="18"/>
+          <line x1="18" y1="6" x2="6" y2="18"/>
+        </svg>
+      </button>
+      <div class="modal-numeral" id="modal-numeral" aria-hidden="true">I</div>
+      <div class="modal-date" id="modal-date"></div>
+      <h2 class="modal-title" id="modal-title"></h2>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="modal-tags" id="modal-tags"></div>
+    </article>
+  </div>
+
   <footer>
     <div class="footer-row">
       <span>Sahayak © MMXXVI</span>

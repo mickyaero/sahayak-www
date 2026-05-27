@@ -171,6 +171,24 @@
   opacity: 0.18;
 }
 
+/* Glowing light streaks traveling along the path */
+.river .streak-halo {
+  fill: var(--accent);
+  filter: blur(7px);
+}
+
+.river .streak-core {
+  fill: #ffd9b0;
+  filter: blur(0.4px);
+}
+
+.river .streak-tail {
+  fill: none;
+  stroke: var(--accent);
+  stroke-linecap: round;
+  filter: blur(2.5px);
+}
+
 /* === MILESTONES === */
 /* Default: visible. If JS runs, we add `.js` to <html> and hide-then-reveal. */
 .milestone {
@@ -337,6 +355,211 @@ html.js .milestone.visible {
   font-style: italic;
   color: var(--accent);
 }
+
+/* Click affordance — milestone cards open modal */
+.milestone-card { cursor: pointer; }
+
+.milestone-card::after {
+  content: '↗  open';
+  position: absolute;
+  bottom: 14px;
+  right: 22px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+  text-transform: uppercase;
+}
+
+.milestone-card:hover::after {
+  opacity: 0.75;
+  transform: translateX(0);
+}
+
+/* =========================================================
+   MODAL — detail popup with full milestone deep-dive
+   ========================================================= */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease);
+}
+
+.modal[aria-hidden="false"] {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 13, 11, 0.86);
+  backdrop-filter: blur(22px) saturate(1.2);
+  -webkit-backdrop-filter: blur(22px) saturate(1.2);
+  cursor: crosshair;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 760px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(200, 117, 51, 0.07) 0%, transparent 55%),
+    rgba(21, 19, 15, 0.95);
+  border: 1px solid var(--muted-line);
+  border-top: 2px solid var(--accent);
+  padding: 64px 64px 56px;
+  transform: translateY(40px) scale(0.97);
+  transition: transform 0.7s var(--ease);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+.modal[aria-hidden="false"] .modal-content {
+  transform: translateY(0) scale(1);
+}
+
+.modal-numeral {
+  position: absolute;
+  top: 18px;
+  right: 28px;
+  font-family: 'Fraunces', serif;
+  font-weight: 200;
+  font-size: 96px;
+  font-variation-settings: "opsz" 144;
+  color: rgba(200, 117, 51, 0.16);
+  pointer-events: none;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.modal-close {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  background: none;
+  border: 1px solid var(--muted-line);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--fg-dim);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s var(--ease);
+  padding: 0;
+}
+
+.modal-close svg { width: 14px; height: 14px; }
+
+.modal-close:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: rotate(90deg);
+}
+
+.modal-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-top: 36px;
+  margin-bottom: 22px;
+}
+
+.modal-date .moment {
+  color: var(--muted);
+  letter-spacing: 0.15em;
+  font-style: italic;
+  text-transform: none;
+}
+
+.modal-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-variation-settings: "opsz" 144;
+  font-size: clamp(28px, 3vw, 44px);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin-bottom: 40px;
+  color: var(--fg);
+}
+
+.modal-body section {
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.modal-body section::before {
+  content: '';
+  position: absolute;
+  left: -18px;
+  top: 6px;
+  width: 8px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.modal-body h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  font-weight: 400;
+}
+
+.modal-body p {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.72;
+  color: var(--fg-dim);
+}
+
+.modal-body em {
+  color: var(--accent);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.modal-body .devanagari-inline {
+  font-family: 'Mukta', sans-serif;
+  font-style: normal;
+}
+
+.modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--muted-line);
+}
+
+@media (max-width: 600px) {
+  .modal-content { padding: 56px 28px 40px; }
+  .modal-numeral { font-size: 64px; top: 16px; right: 18px; }
+  .modal-body section::before { display: none; }
+}
+
+/* Body scroll lock when modal open */
+body.modal-open { overflow: hidden; }
 
 /* End of river */
 .river-end {
