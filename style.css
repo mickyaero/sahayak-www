@@ -113,6 +113,15 @@ a:hover { border-color: var(--accent); }
 
 .nav-item.accent { color: var(--accent); }
 
+/* Anchor used inside nav — kill underline + accent override from base `a` rule */
+.site-header nav a.nav-item {
+  color: var(--muted);
+  border-bottom: none;
+  text-decoration: none;
+  transition: color 0.4s var(--ease);
+}
+.site-header nav a.nav-item:hover { color: var(--accent); }
+
 /* --- Section markers --- */
 .section-marker {
   font-family: 'JetBrains Mono', monospace;

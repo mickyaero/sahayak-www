@@ -1,0 +1,407 @@
+/* =========================================================
+   Sahayak — Memory Lane (timeline page)
+   Surreal-editorial: a constellation, then a flowing river.
+   ========================================================= */
+
+.timeline-page {
+  position: relative;
+}
+
+#stars-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Home link in header */
+.timeline-page .wordmark {
+  text-decoration: none;
+  border-bottom: none;
+  color: inherit;
+}
+
+/* === HERO === */
+.timeline-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 140px 24px 56px;
+  text-align: center;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.horizon-line {
+  position: absolute;
+  top: 24%;
+  left: -5%;
+  right: -5%;
+  height: 60px;
+  pointer-events: none;
+  animation: horizon-drift 18s ease-in-out infinite;
+}
+
+.horizon-line svg {
+  width: 100%;
+  height: 60px;
+  display: block;
+}
+
+@keyframes horizon-drift {
+  0%, 100% { transform: translateY(0) scaleX(1); }
+  50%      { transform: translateY(14px) scaleX(1.04); }
+}
+
+.timeline-hero .hero-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.45em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 56px;
+  position: relative;
+}
+
+.timeline-hero .hero-meta::before,
+.timeline-hero .hero-meta::after {
+  content: '';
+  display: inline-block;
+  width: 36px;
+  height: 1px;
+  background: var(--accent);
+  vertical-align: middle;
+  margin: 0 18px;
+  opacity: 0.6;
+}
+
+.timeline-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  font-size: clamp(72px, 11vw, 180px);
+  letter-spacing: -0.05em;
+  line-height: 0.92;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeline-title .word-1 { color: var(--fg); }
+
+.timeline-title .word-2 {
+  font-style: italic;
+  color: var(--accent);
+  margin-top: -10px;
+  font-weight: 400;
+}
+
+.timeline-hero .subtitle {
+  margin-top: 64px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-variation-settings: "opsz" 144;
+  font-size: clamp(17px, 1.4vw, 21px);
+  line-height: 1.55;
+  color: var(--fg-dim);
+  max-width: 420px;
+}
+
+.subtitle .latin {
+  display: inline-block;
+  margin-top: 22px;
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.timeline-hero .hero-scroll-hint {
+  position: absolute;
+  bottom: 36px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  color: var(--muted);
+  text-transform: uppercase;
+  animation: scroll-hint 2.4s var(--ease) infinite;
+}
+
+/* === TIMELINE TRACK === */
+.timeline-track {
+  position: relative;
+  max-width: 1100px;
+  margin: 80px auto 200px;
+  padding: 0 32px;
+  z-index: 2;
+}
+
+.river {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
+}
+
+.river .path-main {
+  fill: none;
+  stroke: rgba(200, 117, 51, 0.55);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+.river .node {
+  fill: var(--accent);
+  stroke: var(--bg);
+  stroke-width: 4;
+}
+
+.river .pulse {
+  fill: var(--accent);
+  opacity: 0.18;
+}
+
+/* === MILESTONES === */
+.milestone {
+  position: relative;
+  width: calc(50% - 70px);
+  margin: 90px 0;
+  z-index: 3;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.4s var(--ease), transform 1.4s var(--ease);
+}
+
+.milestone.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.milestone.left { margin-right: auto; margin-left: 0; }
+.milestone.right { margin-left: auto; margin-right: 0; }
+
+.milestone .numeral {
+  position: absolute;
+  top: -32px;
+  font-family: 'Fraunces', serif;
+  font-weight: 200;
+  font-size: clamp(120px, 14vw, 200px);
+  font-variation-settings: "opsz" 144;
+  color: rgba(200, 117, 51, 0.07);
+  pointer-events: none;
+  line-height: 0.85;
+  z-index: -1;
+  letter-spacing: -0.04em;
+}
+
+.milestone.left .numeral { right: -28px; }
+.milestone.right .numeral { left: -28px; }
+
+.milestone-card {
+  position: relative;
+  padding: 40px 36px;
+  background: rgba(21, 19, 15, 0.62);
+  backdrop-filter: blur(10px) saturate(1.1);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  border: 1px solid var(--muted-line);
+  border-top: 1px solid var(--accent);
+  animation: card-float 7s ease-in-out infinite;
+  transition: transform 0.7s var(--ease),
+              border-color 0.7s var(--ease),
+              box-shadow 0.7s var(--ease);
+}
+
+@keyframes card-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+.milestone-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top left, rgba(200,117,51,0.05), transparent 60%);
+  pointer-events: none;
+}
+
+.milestone-card:hover {
+  transform: translateY(-12px) rotate(-0.7deg);
+  border-color: var(--accent);
+  box-shadow: 0 20px 80px rgba(200, 117, 51, 0.15);
+}
+
+.milestone.right .milestone-card:hover {
+  transform: translateY(-12px) rotate(0.7deg);
+}
+
+.milestone-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.milestone-date .moment {
+  color: var(--muted);
+  letter-spacing: 0.15em;
+  margin-left: 6px;
+  font-style: italic;
+  text-transform: none;
+}
+
+.milestone-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-variation-settings: "opsz" 144;
+  font-size: clamp(22px, 2.4vw, 32px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+  color: var(--fg);
+}
+
+.milestone-body {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 16.5px;
+  line-height: 1.65;
+  color: var(--fg-dim);
+}
+
+.milestone-body em {
+  color: var(--accent);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.devanagari-inline {
+  font-family: 'Mukta', sans-serif;
+  color: var(--accent);
+  font-weight: 300;
+  font-style: normal;
+}
+
+.milestone-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 26px;
+}
+
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 5px 11px;
+  border: 1px solid var(--muted-line);
+  border-radius: 1px;
+  transition: border-color 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+.milestone-card:hover .tag {
+  border-color: var(--accent-soft);
+}
+
+.tag.future-tag {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Future milestone */
+.milestone.future .milestone-card {
+  border-style: dashed;
+  border-top-style: solid;
+  opacity: 0.85;
+}
+
+.future-card .milestone-title {
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* End of river */
+.river-end {
+  text-align: center;
+  font-family: 'Fraunces', serif;
+  font-size: 64px;
+  font-weight: 200;
+  color: rgba(200, 117, 51, 0.5);
+  margin: 100px 0 40px;
+  animation: end-breath 4.5s ease-in-out infinite;
+  font-variation-settings: "opsz" 144;
+  line-height: 1;
+}
+
+@keyframes end-breath {
+  0%, 100% { opacity: 0.42; transform: scale(1); }
+  50%      { opacity: 0.72; transform: scale(1.08); }
+}
+
+/* === Nav link override === */
+.site-header nav a.nav-item {
+  color: var(--muted);
+  border-bottom: none;
+  text-decoration: none;
+  transition: color 0.4s var(--ease);
+}
+
+.site-header nav a.nav-item:hover { color: var(--accent); }
+
+.site-header .wordmark:hover .brand {
+  color: var(--accent);
+  transition: color 0.4s var(--ease);
+}
+
+/* === Responsive === */
+@media (max-width: 900px) {
+  .timeline-track { padding: 0 24px; }
+
+  .milestone {
+    width: 100%;
+    margin: 60px 0;
+  }
+  .milestone.left, .milestone.right {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .milestone .numeral {
+    font-size: 120px;
+    top: -16px;
+  }
+  .milestone.left .numeral { right: 8px; }
+  .milestone.right .numeral { left: 8px; }
+
+  .river {
+    /* Reduce path visibility on mobile — it ends up too narrow */
+    opacity: 0.55;
+  }
+
+  .timeline-hero { padding: 100px 24px 40px; }
+  .horizon-line { top: 28%; }
+}
+
+@media (max-width: 480px) {
+  .milestone-card { padding: 28px 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .milestone-card,
+  .horizon-line,
+  .river-end { animation: none !important; }
+  .milestone { opacity: 1; transform: none; }
+}

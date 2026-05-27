@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sahayak — Memory Lane</title>
+  <meta name="description" content="Where Sahayak has been. A topography of decisions.">
+  <meta property="og:title" content="Sahayak — Memory Lane">
+  <meta property="og:description" content="A topography of decisions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,200..700&family=Crimson+Pro:ital,wght@0,300..600;1,300..600&family=JetBrains+Mono:wght@300;400&family=Mukta:wght@200;300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="timeline.css">
+</head>
+<body class="timeline-page">
+  <canvas id="cursor-canvas" aria-hidden="true"></canvas>
+  <canvas id="stars-canvas" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <a class="wordmark" href="index.html">
+      <span class="mark" aria-hidden="true">△</span>
+      <span class="brand">SAHAYAK</span>
+    </a>
+    <nav>
+      <a href="index.html" class="nav-item">← Home</a>
+      <span class="nav-item accent">Memory</span>
+    </nav>
+  </header>
+
+  <section class="timeline-hero">
+    <div class="horizon-line" aria-hidden="true">
+      <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M 0 30 Q 200 8, 400 30 T 800 30 T 1200 30" fill="none" stroke="rgba(200,117,51,0.35)" stroke-width="1"/>
+      </svg>
+    </div>
+    <div class="hero-meta">A topography of decisions</div>
+    <h1 class="timeline-title">
+      <span class="word-1">Memory</span>
+      <span class="word-2">Lane</span>
+    </h1>
+    <p class="subtitle">
+      Where Sahayak has been.<br>
+      What was decided.<br>
+      <span class="latin">memoria itineris</span>
+    </p>
+    <div class="hero-scroll-hint">scroll&nbsp;↓</div>
+  </section>
+
+  <section class="timeline-track">
+    <svg class="river" id="river-svg" aria-hidden="true"></svg>
+
+    <article class="milestone left" data-index="1">
+      <div class="numeral" aria-hidden="true">I</div>
+      <div class="milestone-card">
+        <div class="milestone-date">XXVI&nbsp;·&nbsp;MAY&nbsp;·&nbsp;MMXXVI <span class="moment">— first light</span></div>
+        <h3 class="milestone-title">A Question Was Put on Paper</h3>
+        <p class="milestone-body">
+          The first sketch. <em>Delivery, in difficult Indian conditions.</em><br>
+          Three use cases. Six environments.<br>
+          The shape of a question.
+        </p>
+        <div class="milestone-tags">
+          <span class="tag">ideation</span>
+          <span class="tag">problem</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="milestone right" data-index="2">
+      <div class="numeral" aria-hidden="true">II</div>
+      <div class="milestone-card">
+        <div class="milestone-date">XXVI&nbsp;·&nbsp;MAY&nbsp;·&nbsp;MMXXVI <span class="moment">— mid-afternoon</span></div>
+        <h3 class="milestone-title">A Name Surfaced</h3>
+        <p class="milestone-body">
+          <span class="devanagari-inline">सहायक.</span>&nbsp; <em>"Assistant."</em><br>
+          Bangalore. Two hands. Bootstrap.<br>
+          Ground, never air.
+        </p>
+        <div class="milestone-tags">
+          <span class="tag">name</span>
+          <span class="tag">place</span>
+          <span class="tag">crew</span>
+          <span class="tag">form</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="milestone left" data-index="3">
+      <div class="numeral" aria-hidden="true">III</div>
+      <div class="milestone-card">
+        <div class="milestone-date">XXVI&nbsp;·&nbsp;MAY&nbsp;·&nbsp;MMXXVI <span class="moment">— dusk</span></div>
+        <h3 class="milestone-title">The Gate Opened</h3>
+        <p class="milestone-body">
+          Tech parks fell away. Campuses came forward.<br>
+          <em>"Mess closes at nine. Students stay up till two."</em><br>
+          The five-hour gap is where Sahayak lives.
+        </p>
+        <div class="milestone-tags">
+          <span class="tag">beachhead</span>
+          <span class="tag">campus</span>
+          <span class="tag">pivot</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="milestone right" data-index="4">
+      <div class="numeral" aria-hidden="true">IV</div>
+      <div class="milestone-card">
+        <div class="milestone-date">XXVII&nbsp;·&nbsp;MAY&nbsp;·&nbsp;MMXXVI <span class="moment">— morning</span></div>
+        <h3 class="milestone-title">Ten Lines on a Board</h3>
+        <p class="milestone-body">
+          Routing. Container. Obstacles — even monkeys.<br>
+          Weather. Safety. Privacy. Operation. Maintenance.<br>
+          Monitoring of rover sensors. <em>Ten anchors.</em>
+        </p>
+        <div class="milestone-tags">
+          <span class="tag">requirements</span>
+          <span class="tag">v0</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="milestone left" data-index="5">
+      <div class="numeral" aria-hidden="true">V</div>
+      <div class="milestone-card">
+        <div class="milestone-date">XXVII&nbsp;·&nbsp;MAY&nbsp;·&nbsp;MMXXVI <span class="moment">— evening</span></div>
+        <h3 class="milestone-title">The Architecture Drew Itself</h3>
+        <p class="milestone-body">
+          People. Environment. Maintenance. <em>Rover.</em><br>
+          Four sub-systems unfolded: Structure, Electronics, Computing, Charging.<br>
+          The boxes did not merge — they connected.
+        </p>
+        <div class="milestone-tags">
+          <span class="tag">architecture</span>
+          <span class="tag">system</span>
+          <span class="tag">connections</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="milestone right" data-index="6">
+      <div class="numeral" aria-hidden="true">VI</div>
+      <div class="milestone-card">
+        <div class="milestone-date">XXVII&nbsp;·&nbsp;MAY&nbsp;·&nbsp;MMXXVI <span class="moment">— same evening</span></div>
+        <h3 class="milestone-title">Twenty Kilometres. Three Kilograms.</h3>
+        <p class="milestone-body">
+          The first numbers were committed.<br>
+          And four anchors were fastened to the rest:<br>
+          <em>frugal · autonomous · affordable · of value to people.</em>
+        </p>
+        <div class="milestone-tags">
+          <span class="tag">objectives</span>
+          <span class="tag">values</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="milestone left future" data-index="7">
+      <div class="numeral" aria-hidden="true">VII</div>
+      <div class="milestone-card future-card">
+        <div class="milestone-date">—&nbsp;·&nbsp;?&nbsp;·&nbsp;MMXXVI <span class="moment">— to come</span></div>
+        <h3 class="milestone-title">The Next Whiteboard</h3>
+        <p class="milestone-body">
+          Vendor. Property admin. Fleet ops. Compliance.<br>
+          The Charging box waits to be unpacked.<br>
+          <em>The river continues.</em>
+        </p>
+        <div class="milestone-tags">
+          <span class="tag future-tag">future</span>
+        </div>
+      </div>
+    </article>
+
+    <div class="river-end" aria-hidden="true">∞</div>
+  </section>
+
+  <footer>
+    <div class="footer-row">
+      <span>Sahayak © MMXXVI</span>
+      <span class="footer-center">Stewart × Mahajan</span>
+      <span>Bangalore — IN</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="timeline.js"></script>
+</body>
+</html>
