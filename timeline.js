@@ -3,6 +3,10 @@
    Constellation background + river-path between milestones.
    ========================================================= */
 
+// Mark JS as available — CSS uses this to apply hide-then-reveal animations.
+// Without this class, milestones are visible by default (progressive enhancement).
+document.documentElement.classList.add('js');
+
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* =========================================================
@@ -218,11 +222,16 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
         }
       });
     },
-    { threshold: 0.18 }
+    { threshold: 0.05, rootMargin: '0px 0px -10% 0px' }
   );
 
   items.forEach((m, i) => {
     m.style.transitionDelay = `${i * 0.08}s`;
     obs.observe(m);
   });
+
+  // Safety net — if anything goes sideways with the observer, force-reveal after 2s.
+  setTimeout(() => {
+    items.forEach(m => m.classList.add('visible'));
+  }, 2000);
 })();

@@ -172,17 +172,21 @@
 }
 
 /* === MILESTONES === */
+/* Default: visible. If JS runs, we add `.js` to <html> and hide-then-reveal. */
 .milestone {
   position: relative;
   width: calc(50% - 70px);
   margin: 90px 0;
   z-index: 3;
+}
+
+html.js .milestone {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 1.4s var(--ease), transform 1.4s var(--ease);
 }
 
-.milestone.visible {
+html.js .milestone.visible {
   opacity: 1;
   transform: translateY(0);
 }
