@@ -7,7 +7,11 @@
 // Without this class, milestones are visible by default (progressive enhancement).
 document.documentElement.classList.add('js');
 
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+// `reducedMotion` is already declared at the top of script.js (loaded first).
+// Reusing that constant — don't redeclare or we collide and crash the file.
+const tlReducedMotion = (typeof reducedMotion !== 'undefined')
+  ? reducedMotion
+  : window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* =========================================================
    STARS — drifting constellation background
@@ -95,7 +99,7 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
       ctx.fill();
     }
 
-    if (!reducedMotion) t += 0.012;
+    if (!tlReducedMotion) t += 0.012;
     requestAnimationFrame(draw);
   };
   draw();
@@ -230,7 +234,7 @@ const RIVER_STATE = { pathInfo: null, streaks: [] };
    STREAKS — animate glowing pulses along the path
    ========================================================= */
 (() => {
-  if (reducedMotion) return;
+  if (tlReducedMotion) return;
   let lastT = 0;
   const tick = (now) => {
     const pi = RIVER_STATE.pathInfo;
