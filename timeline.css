@@ -404,7 +404,7 @@ html.js .milestone.visible {
 
 .modal-content {
   position: relative;
-  max-width: 760px;
+  max-width: 900px;
   width: 100%;
   max-height: 88vh;
   overflow-y: auto;
@@ -413,7 +413,7 @@ html.js .milestone.visible {
     rgba(21, 19, 15, 0.95);
   border: 1px solid var(--muted-line);
   border-top: 2px solid var(--accent);
-  padding: 64px 64px 56px;
+  padding: 64px 56px 56px;
   transform: translateY(40px) scale(0.97);
   transition: transform 0.7s var(--ease);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
@@ -595,7 +595,18 @@ html.js .milestone.visible {
   width: 100%;
   height: auto;
   display: block;
-  max-height: 280px;
+  max-height: 540px;
+}
+
+/* Architecture / decomposition diagram needs more vertical room */
+.modal-diagram.diagram-wide {
+  padding: 28px 6px 16px;
+  overflow-x: auto;
+}
+
+.modal-diagram.diagram-wide svg {
+  min-width: 760px;
+  max-height: 560px;
 }
 
 .diagram-caption {

@@ -275,59 +275,108 @@ const RIVER_STATE = { pathInfo: null };
    ========================================================= */
 const REPO_BASE = 'https://github.com/mickyaero/sahayak/blob/main/';
 
-// Architecture mini-diagram — used in milestone V
-const ARCH_DIAGRAM_SVG = '<svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">'
-  + '<g font-family="Fraunces, serif">'
-    + '<rect x="20" y="30" width="120" height="46" fill="none" stroke="#C87533" stroke-width="1.1"/>'
-    + '<text x="80" y="52" text-anchor="middle" fill="#EDE6D5" font-size="13">People</text>'
-    + '<text x="80" y="68" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="7" letter-spacing="0.15em">SAFETY · PRIVACY · ₹</text>'
-    + '<rect x="20" y="110" width="120" height="46" fill="none" stroke="#C87533" stroke-width="1.1"/>'
-    + '<text x="80" y="132" text-anchor="middle" fill="#EDE6D5" font-size="13">Environment</text>'
-    + '<text x="80" y="148" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="7" letter-spacing="0.15em">WEATHER · ROAD · ANIMALS</text>'
-    + '<rect x="20" y="190" width="120" height="46" fill="none" stroke="#C87533" stroke-width="1.1"/>'
-    + '<text x="80" y="212" text-anchor="middle" fill="#EDE6D5" font-size="13">Maintenance</text>'
-    + '<text x="80" y="228" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="7" letter-spacing="0.15em">SENSOR MONITORING</text>'
-  + '</g>'
+// Architecture decomposition diagram (systems-engineering WBS style) — milestone V
+const ARCH_DIAGRAM_SVG = '<svg viewBox="0 0 1180 380" xmlns="http://www.w3.org/2000/svg">'
+  // === LEVEL 0 — Sahayak (root) ===
   + '<g>'
-    + '<rect x="340" y="110" width="120" height="60" fill="rgba(200,117,51,0.1)" stroke="#C87533" stroke-width="2.2"/>'
-    + '<text x="400" y="138" text-anchor="middle" fill="#EDE6D5" font-family="Fraunces, serif" font-size="17">ROVER</text>'
-    + '<text x="400" y="158" text-anchor="middle" fill="#C87533" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="0.3em">CENTRAL</text>'
+    + '<rect x="510" y="14" width="160" height="54" fill="rgba(200,117,51,0.14)" stroke="#C87533" stroke-width="2.4"/>'
+    + '<text x="590" y="34" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="0.3em">1.0</text>'
+    + '<text x="590" y="56" text-anchor="middle" fill="#EDE6D5" font-family="Fraunces, serif" font-size="18">SAHAYAK</text>'
   + '</g>'
-  + '<g font-family="Fraunces, serif">'
-    + '<rect x="620" y="20" width="160" height="40" fill="none" stroke="rgba(200,117,51,0.65)" stroke-width="0.9"/>'
-    + '<text x="700" y="38" text-anchor="middle" fill="#EDE6D5" font-size="12">Structure</text>'
-    + '<text x="700" y="52" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="7" letter-spacing="0.1em">HORN · LIGHTS · CHASSIS</text>'
-    + '<rect x="620" y="80" width="160" height="40" fill="none" stroke="rgba(200,117,51,0.65)" stroke-width="0.9"/>'
-    + '<text x="700" y="98" text-anchor="middle" fill="#EDE6D5" font-size="12">Electronics</text>'
-    + '<text x="700" y="112" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="7" letter-spacing="0.1em">CAMERA · SENSOR · GPS</text>'
-    + '<rect x="620" y="140" width="160" height="40" fill="none" stroke="rgba(200,117,51,0.65)" stroke-width="0.9"/>'
-    + '<text x="700" y="158" text-anchor="middle" fill="#EDE6D5" font-size="12">Computing</text>'
-    + '<text x="700" y="172" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="7" letter-spacing="0.1em">SLAM · CV · FLEET</text>'
-    + '<rect x="620" y="200" width="160" height="40" fill="none" stroke="rgba(200,117,51,0.65)" stroke-width="0.9"/>'
-    + '<text x="700" y="218" text-anchor="middle" fill="#EDE6D5" font-size="12">Charging</text>'
-    + '<text x="700" y="232" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="7" letter-spacing="0.1em">DOCK · BATTERY</text>'
+  // === L0 → L1 right-angle connectors ===
+  + '<g stroke="#C87533" stroke-width="1.1" fill="none">'
+    + '<line x1="590" y1="68" x2="590" y2="92"/>'
+    + '<line x1="230" y1="92" x2="880" y2="92"/>'
+    + '<line x1="230" y1="92" x2="230" y2="116"/>'
+    + '<line x1="880" y1="92" x2="880" y2="116"/>'
   + '</g>'
+  // === LEVEL 1 — External Context (dashed = environment) | Rover (system of interest) ===
+  + '<g>'
+    + '<rect x="80" y="116" width="300" height="50" fill="none" stroke="#C87533" stroke-width="1.4" stroke-dasharray="7 4"/>'
+    + '<text x="230" y="136" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.3em">1.1</text>'
+    + '<text x="230" y="156" text-anchor="middle" fill="#EDE6D5" font-family="Fraunces, serif" font-size="15" font-style="italic">External Context</text>'
+    + '<rect x="600" y="116" width="560" height="50" fill="rgba(200,117,51,0.09)" stroke="#C87533" stroke-width="1.6"/>'
+    + '<text x="880" y="136" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.3em">1.2</text>'
+    + '<text x="880" y="156" text-anchor="middle" fill="#EDE6D5" font-family="Fraunces, serif" font-size="15">Rover &#8212; System of Interest</text>'
+  + '</g>'
+  // === L1 → L2 right-angle connectors ===
   + '<g stroke="#C87533" stroke-width="0.9" fill="none">'
-    + '<line x1="140" y1="53" x2="340" y2="125"/>'
-    + '<line x1="140" y1="133" x2="340" y2="138"/>'
-    + '<line x1="140" y1="213" x2="340" y2="155"/>'
+    // External branch
+    + '<line x1="230" y1="166" x2="230" y2="196"/>'
+    + '<line x1="100" y1="196" x2="360" y2="196"/>'
+    + '<line x1="100" y1="196" x2="100" y2="224"/>'
+    + '<line x1="230" y1="196" x2="230" y2="224"/>'
+    + '<line x1="360" y1="196" x2="360" y2="224"/>'
+    // Rover branch
+    + '<line x1="880" y1="166" x2="880" y2="196"/>'
+    + '<line x1="660" y1="196" x2="1100" y2="196"/>'
+    + '<line x1="660" y1="196" x2="660" y2="224"/>'
+    + '<line x1="800" y1="196" x2="800" y2="224"/>'
+    + '<line x1="950" y1="196" x2="950" y2="224"/>'
+    + '<line x1="1100" y1="196" x2="1100" y2="224"/>'
   + '</g>'
-  + '<g stroke="#C87533" stroke-width="0.9" fill="none">'
-    + '<line x1="460" y1="124" x2="620" y2="40"/>'
-    + '<line x1="460" y1="132" x2="620" y2="100"/>'
-    + '<line x1="460" y1="148" x2="620" y2="160"/>'
-    + '<line x1="460" y1="156" x2="620" y2="220"/>'
+  // === LEVEL 2 — sub-categories (3 external + 4 rover) ===
+  + '<g>'
+    // 1.1.1 People
+    + '<rect x="40" y="224" width="120" height="100" fill="none" stroke="#C87533" stroke-width="1"/>'
+    + '<text x="100" y="240" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="0.25em">1.1.1</text>'
+    + '<text x="100" y="260" text-anchor="middle" fill="#EDE6D5" font-family="Fraunces, serif" font-size="13">People</text>'
+    + '<text x="100" y="282" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="11">affordability</text>'
+    + '<text x="100" y="298" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="11">safety</text>'
+    + '<text x="100" y="314" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="11">privacy</text>'
+    // 1.1.2 Environment
+    + '<rect x="170" y="224" width="120" height="100" fill="none" stroke="#C87533" stroke-width="1"/>'
+    + '<text x="230" y="240" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="0.25em">1.1.2</text>'
+    + '<text x="230" y="260" text-anchor="middle" fill="#EDE6D5" font-family="Fraunces, serif" font-size="13">Environment</text>'
+    + '<text x="230" y="282" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="11">weather</text>'
+    + '<text x="230" y="298" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="11">road conditions</text>'
+    + '<text x="230" y="314" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="11">animals</text>'
+    // 1.1.3 Maintenance
+    + '<rect x="300" y="224" width="120" height="100" fill="none" stroke="#C87533" stroke-width="1"/>'
+    + '<text x="360" y="240" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="0.25em">1.1.3</text>'
+    + '<text x="360" y="260" text-anchor="middle" fill="#EDE6D5" font-family="Fraunces, serif" font-size="13">Maintenance</text>'
+    + '<text x="360" y="282" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="11">sensor monitoring</text>'
+    + '<text x="360" y="298" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="11">(camera · motor</text>'
+    + '<text x="360" y="314" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="11">· battery health)</text>'
+    // 1.2.1 Structure
+    + '<rect x="600" y="224" width="120" height="100" fill="rgba(200,117,51,0.06)" stroke="#C87533" stroke-width="1"/>'
+    + '<text x="660" y="240" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="0.25em">1.2.1</text>'
+    + '<text x="660" y="260" text-anchor="middle" fill="#EDE6D5" font-family="Fraunces, serif" font-size="13">Structure</text>'
+    + '<text x="660" y="282" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="11">horn · lights</text>'
+    + '<text x="660" y="298" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="11">cargo · tyres · frame</text>'
+    + '<text x="660" y="314" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="11">suspension · housing</text>'
+    // 1.2.2 Electronics
+    + '<rect x="740" y="224" width="120" height="100" fill="rgba(200,117,51,0.06)" stroke="#C87533" stroke-width="1"/>'
+    + '<text x="800" y="240" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="0.25em">1.2.2</text>'
+    + '<text x="800" y="260" text-anchor="middle" fill="#EDE6D5" font-family="Fraunces, serif" font-size="13">Electronics</text>'
+    + '<text x="800" y="282" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="11">circuits</text>'
+    + '<text x="800" y="298" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="11">camera · sensor</text>'
+    + '<text x="800" y="314" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="11">motor · GPS</text>'
+    // 1.2.3 Computing
+    + '<rect x="890" y="224" width="120" height="100" fill="rgba(200,117,51,0.06)" stroke="#C87533" stroke-width="1"/>'
+    + '<text x="950" y="240" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="0.25em">1.2.3</text>'
+    + '<text x="950" y="260" text-anchor="middle" fill="#EDE6D5" font-family="Fraunces, serif" font-size="13">Computing</text>'
+    + '<text x="950" y="282" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="11">mobility · navigation</text>'
+    + '<text x="950" y="298" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="11">computer vision</text>'
+    + '<text x="950" y="314" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="11">fleet orchestration</text>'
+    // 1.2.4 Charging
+    + '<rect x="1040" y="224" width="120" height="100" fill="rgba(200,117,51,0.06)" stroke="#C87533" stroke-width="1" stroke-dasharray="4 3"/>'
+    + '<text x="1100" y="240" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="0.25em">1.2.4</text>'
+    + '<text x="1100" y="260" text-anchor="middle" fill="#EDE6D5" font-family="Fraunces, serif" font-size="13">Charging</text>'
+    + '<text x="1100" y="282" text-anchor="middle" fill="#7A746C" font-family="Crimson Pro, serif" font-style="italic" font-size="10">(dock, battery</text>'
+    + '<text x="1100" y="296" text-anchor="middle" fill="#7A746C" font-family="Crimson Pro, serif" font-style="italic" font-size="10">chemistry, swap</text>'
+    + '<text x="1100" y="310" text-anchor="middle" fill="#7A746C" font-family="Crimson Pro, serif" font-style="italic" font-size="10">protocol —</text>'
+    + '<text x="1100" y="324" text-anchor="middle" fill="#7A746C" font-family="Crimson Pro, serif" font-style="italic" font-size="10">to be unpacked)</text>'
   + '</g>'
-  + '<g stroke="rgba(200,117,51,0.4)" stroke-width="0.6" stroke-dasharray="3 3" fill="none">'
-    + '<path d="M 140 50 Q 380 60 620 100"/>'
-    + '<path d="M 140 130 Q 380 80 620 160"/>'
-    + '<path d="M 140 215 Q 380 240 620 110"/>'
-  + '</g>'
-  + '<g font-family="JetBrains Mono, monospace" font-size="7" letter-spacing="0.18em" fill="#7A746C">'
-    + '<line x1="20" y1="265" x2="40" y2="265" stroke="#C87533" stroke-width="0.9"/>'
-    + '<text x="48" y="269">DIRECT INTERFACE</text>'
-    + '<line x1="220" y1="265" x2="240" y2="265" stroke="rgba(200,117,51,0.4)" stroke-width="0.6" stroke-dasharray="3 3"/>'
-    + '<text x="248" y="269">CROSS-CUTTING DEPENDENCY</text>'
+  // === Legend / system boundary annotation ===
+  + '<g font-family="JetBrains Mono, monospace" font-size="9" fill="#7A746C" letter-spacing="0.2em">'
+    + '<rect x="20" y="354" width="14" height="10" fill="none" stroke="#C87533" stroke-width="1.2" stroke-dasharray="3 2"/>'
+    + '<text x="42" y="363">ENVIRONMENT</text>'
+    + '<rect x="240" y="354" width="14" height="10" fill="rgba(200,117,51,0.08)" stroke="#C87533" stroke-width="1.2"/>'
+    + '<text x="262" y="363">SYSTEM OF INTEREST</text>'
+    + '<rect x="500" y="354" width="14" height="10" fill="rgba(200,117,51,0.06)" stroke="#C87533" stroke-width="1" stroke-dasharray="4 3"/>'
+    + '<text x="522" y="363">TO BE DECOMPOSED LATER</text>'
+    + '<text x="820" y="363" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="10" letter-spacing="0">WBS · functional decomposition</text>'
   + '</g>'
   + '</svg>';
 
@@ -439,9 +488,10 @@ const milestoneData = {
     numeral: 'V',
     date: 'XXVII · MAY · MMXXVI <span class="moment">— evening</span>',
     title: 'The Architecture Drew Itself',
-    lede: 'Three external entities. One central rover. Four sub-systems. <em>And the boxes did not merge — they connected.</em>',
+    lede: 'A systems-engineering decomposition. <em>External context</em> on one side, the <em>Rover</em> as the system of interest on the other. Each branch breaks down into its sub-categories.',
     diagram: ARCH_DIAGRAM_SVG,
-    diagramCaption: 'Where two boxes share a concern, they connect by an edge — not collapse into one.',
+    diagramWide: true,
+    diagramCaption: 'WBS-style functional decomposition. Dashed boxes = environment (not built by us). Solid boxes = system of interest. Each level numbered 1.0 → 1.x → 1.x.y for traceability.',
     decisions: {
       label: 'The architecture',
       items: [
@@ -539,7 +589,8 @@ const milestoneData = {
       html += `<p class="modal-lede">${data.lede}</p>`;
     }
     if (data.diagram) {
-      html += `<div class="modal-diagram">${data.diagram}`;
+      const wideClass = data.diagramWide ? ' diagram-wide' : '';
+      html += `<div class="modal-diagram${wideClass}">${data.diagram}`;
       if (data.diagramCaption) {
         html += `<p class="diagram-caption">${data.diagramCaption}</p>`;
       }
