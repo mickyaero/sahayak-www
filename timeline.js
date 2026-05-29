@@ -549,19 +549,22 @@ const milestoneData = {
         '<strong>New chassis baseline:</strong> <em>4 wheels, skid-steer, independent BLDC motors per wheel, passive swing-arm suspension</em>.',
         '<strong>WB04 broke the rover into 4 departments:</strong> Mech (structure, tyres, hub, suspension, container), Elec (controllers, batteries, motors, brakes, μC), Comm (GPS, Rx/Tx), Compute (processor, cameras×4, lights/horn).',
         '<strong>Frugality targets locked:</strong> ≤ ₹80,000 BOM, ≤ 15 kg total (= 12 kg empty + 3 kg payload).',
-        '<strong>Back-calculation against real Indian sourcing:</strong> lean v0 at ~₹70-80k / 14.5 kg achievable — but with concessions (smaller battery → ~5 km range, 2 cameras only, 50 W motors at ~3 km/h).',
-        '<strong>Two-track plan recommended:</strong> v0 lean prototype (₹80k / 15 kg, for concept demo) → v1 production-grade (~₹4 L / 40 kg, for paid pilots).'
+        '<strong>Performance targets refined:</strong> the founders pushed for <em>5 km/h cruise</em> and <em>10 km practical range</em> — both achievable.',
+        '<strong>Honest energy math:</strong> earlier conservative estimates were corrected. 4 × 50 W BLDC motors handle 5 km/h on a 10° campus ramp with 50% margin. A 24V/12Ah LiFePO4 pack (~290 Wh installed, ~230 Wh usable) gives ~21 km cruise and ~10 km practical at 50% duty cycle.',
+        '<strong>v0 lean+ landing point:</strong> ~₹76-88k all-in / ~13 kg empty / ~16 kg laden, delivering 5 km/h × 10 km. <em>One kilogram over the 15 kg laden want</em> — but every other target met cleanly.',
+        '<strong>The 15 kg boundary identified as physics:</strong> Starship at similar capabilities is 35 kg empty. Sahayak v0 at 13 kg is already 2.7× lighter — close to the load-floor for an LFP-powered, 4-wheel skid-steer with 3 kg payload + 10 km range.',
+        '<strong>Two-track plan recommended:</strong> v0 lean+ (₹80k / 13 kg, concept demo) → v1 production-grade (~₹4 L / 40 kg, paid pilots).'
       ]
     },
     links: [
       { path: 'product/whiteboards/04_2026-05-29_breakdown.md', label: 'whiteboard digitization' },
       { path: 'product/whiteboards/04_2026-05-29_breakdown.jpg', label: 'raw whiteboard image' },
       { path: 'product/chassis_design_research_v0.md', label: 'research synthesis (3 parallel agents)' },
-      { path: 'product/chassis_components_v0.md', label: 'line-by-line back-calculation with prices' },
+      { path: 'product/chassis_components_v0.md', label: 'line-by-line back-calc + v0 lean+ spec' },
       { path: 'product/chassis_design_v0.md', label: 'updated working hypothesis' }
     ],
-    coda: 'The arithmetic was done in green ink. Now the question is what to actually buy.',
-    tags: ['chassis', 'frugality', '4-wheel', 'BOM', 'back-calc']
+    coda: 'The arithmetic was done in green ink, then redone honestly. The pencil now hovers over a buy list.',
+    tags: ['chassis', 'frugality', '4-wheel', 'BOM', 'v0-lean+', 'physics']
   },
   '8': {
     numeral: 'VIII',
