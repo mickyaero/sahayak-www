@@ -537,19 +537,48 @@ const milestoneData = {
   },
   '7': {
     numeral: 'VII',
+    date: 'XXIX · MAY · MMXXVI <span class="moment">— a quiet evening of arithmetic</span>',
+    title: 'The Numbers Were Counted',
+    lede: 'A hypothesis was pressure-tested, and then the rover was weighed in parts. <em>Three wheels became four.</em> Each department received a cost and a mass.',
+    diagram: '<svg viewBox="0 0 1000 360" xmlns="http://www.w3.org/2000/svg" font-family="Fraunces, serif"><g><rect x="40" y="30" width="200" height="120" fill="rgba(200,117,51,0.08)" stroke="#C87533" stroke-width="1.2"/><text x="140" y="54" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.3em">DEPT. 1</text><text x="140" y="78" text-anchor="middle" fill="#EDE6D5" font-size="16">Mech</text><text x="140" y="106" text-anchor="middle" fill="#C87533" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="0.15em">~₹17k · 10 kg</text><text x="140" y="128" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="10">structure · tyres · hub · suspension · container</text></g><g><rect x="260" y="30" width="200" height="120" fill="rgba(200,117,51,0.08)" stroke="#C87533" stroke-width="1.2"/><text x="360" y="54" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.3em">DEPT. 2</text><text x="360" y="78" text-anchor="middle" fill="#EDE6D5" font-size="16">Elec</text><text x="360" y="106" text-anchor="middle" fill="#C87533" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="0.15em">~₹31k · 6 kg</text><text x="360" y="128" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="10">MC · batteries · motors · brakes · μC</text></g><g><rect x="480" y="30" width="200" height="120" fill="rgba(200,117,51,0.08)" stroke="#C87533" stroke-width="1.2"/><text x="580" y="54" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.3em">DEPT. 3</text><text x="580" y="78" text-anchor="middle" fill="#EDE6D5" font-size="16">Comm</text><text x="580" y="106" text-anchor="middle" fill="#C87533" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="0.15em">~₹8k · 1 kg</text><text x="580" y="128" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="10">GPS · Rx/Tx · antennas</text></g><g><rect x="700" y="30" width="200" height="120" fill="rgba(200,117,51,0.08)" stroke="#C87533" stroke-width="1.2"/><text x="800" y="54" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.3em">DEPT. 4</text><text x="800" y="78" text-anchor="middle" fill="#EDE6D5" font-size="16">Compute</text><text x="800" y="106" text-anchor="middle" fill="#C87533" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="0.15em">~₹26k · 1 kg</text><text x="800" y="128" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="10">processor · cameras × 4 · lights / horn</text></g><g><line x1="40" y1="190" x2="900" y2="190" stroke="#C87533" stroke-width="0.6" stroke-dasharray="3 3" opacity="0.5"/></g><g><rect x="40" y="220" width="380" height="100" fill="none" stroke="rgba(237,230,213,0.15)" stroke-width="1"/><text x="230" y="248" text-anchor="middle" fill="#7A746C" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="0.3em">SUM OF DEPARTMENTS</text><text x="230" y="280" text-anchor="middle" fill="#EDE6D5" font-family="Fraunces, serif" font-size="22">~₹82k  ·  18 kg empty</text><text x="230" y="306" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="11">+ 3 kg payload = 21 kg laden</text></g><g><rect x="520" y="220" width="380" height="100" fill="rgba(200,117,51,0.1)" stroke="#C87533" stroke-width="1.8"/><text x="710" y="248" text-anchor="middle" fill="#C87533" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="0.3em">WHAT WE WANT</text><text x="710" y="280" text-anchor="middle" fill="#EDE6D5" font-family="Fraunces, serif" font-size="22">≤ ₹80k  ·  ≤ 15 kg total</text><text x="710" y="306" text-anchor="middle" fill="#A89A88" font-family="Crimson Pro, serif" font-style="italic" font-size="11">(including the 3 kg payload — so ≤ 12 kg empty)</text></g></svg>',
+    diagramCaption: 'Four departments, four columns of numbers. The sum overshoots the want by ~6 kg of mass — the gap to close.',
+    decisions: {
+      label: 'What happened',
+      items: [
+        '<strong>The 3-wheel each-motor hypothesis was rejected</strong> — three converging arguments from research: pothole tip-over geometry (no support triangle), single-motor-failure fragility, and only marginal cost savings.',
+        '<strong>New chassis baseline:</strong> <em>4 wheels, skid-steer, independent BLDC motors per wheel, passive swing-arm suspension</em>.',
+        '<strong>WB04 broke the rover into 4 departments:</strong> Mech (structure, tyres, hub, suspension, container), Elec (controllers, batteries, motors, brakes, μC), Comm (GPS, Rx/Tx), Compute (processor, cameras×4, lights/horn).',
+        '<strong>Frugality targets locked:</strong> ≤ ₹80,000 BOM, ≤ 15 kg total (= 12 kg empty + 3 kg payload).',
+        '<strong>Back-calculation against real Indian sourcing:</strong> lean v0 at ~₹70-80k / 14.5 kg achievable — but with concessions (smaller battery → ~5 km range, 2 cameras only, 50 W motors at ~3 km/h).',
+        '<strong>Two-track plan recommended:</strong> v0 lean prototype (₹80k / 15 kg, for concept demo) → v1 production-grade (~₹4 L / 40 kg, for paid pilots).'
+      ]
+    },
+    links: [
+      { path: 'product/whiteboards/04_2026-05-29_breakdown.md', label: 'whiteboard digitization' },
+      { path: 'product/whiteboards/04_2026-05-29_breakdown.jpg', label: 'raw whiteboard image' },
+      { path: 'product/chassis_design_research_v0.md', label: 'research synthesis (3 parallel agents)' },
+      { path: 'product/chassis_components_v0.md', label: 'line-by-line back-calculation with prices' },
+      { path: 'product/chassis_design_v0.md', label: 'updated working hypothesis' }
+    ],
+    coda: 'The arithmetic was done in green ink. Now the question is what to actually buy.',
+    tags: ['chassis', 'frugality', '4-wheel', 'BOM', 'back-calc']
+  },
+  '8': {
+    numeral: 'VIII',
     date: '— · ? · MMXXVI <span class="moment">— to come</span>',
     title: 'The Next Whiteboard',
     lede: '<em>What is queued. What is being prepared. What is being held.</em>',
-    diagram: '<svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg"><g><line x1="40" y1="60" x2="500" y2="60" stroke="#C87533" stroke-width="1" stroke-dasharray="6 6" opacity="0.85"/><line x1="40" y1="100" x2="520" y2="100" stroke="#C87533" stroke-width="1" stroke-dasharray="6 6" opacity="0.6"/><line x1="40" y1="140" x2="480" y2="140" stroke="#C87533" stroke-width="1" stroke-dasharray="6 6" opacity="0.4"/></g><g font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="0.22em" fill="#EDE6D5"><text x="40" y="52">VENDOR</text><text x="40" y="92">PROPERTY ADMIN</text><text x="40" y="132">FLEET OPS · COMPLIANCE</text></g><g fill="#C87533" font-family="Fraunces, serif" font-style="italic" font-size="26"><text x="538" y="68" text-anchor="middle">?</text><text x="558" y="108" text-anchor="middle">?</text><text x="518" y="148" text-anchor="middle">?</text></g></svg>',
-    diagramCaption: 'Three external entities queued for the next architecture iteration.',
+    diagram: '<svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg"><g><line x1="40" y1="60" x2="500" y2="60" stroke="#C87533" stroke-width="1" stroke-dasharray="6 6" opacity="0.85"/><line x1="40" y1="100" x2="520" y2="100" stroke="#C87533" stroke-width="1" stroke-dasharray="6 6" opacity="0.6"/><line x1="40" y1="140" x2="480" y2="140" stroke="#C87533" stroke-width="1" stroke-dasharray="6 6" opacity="0.4"/></g><g font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="0.22em" fill="#EDE6D5"><text x="40" y="52">VENDOR · PROPERTY ADMIN</text><text x="40" y="92">FIRST PROTOTYPE BUILD</text><text x="40" y="132">CUSTOMER DISCOVERY · ENTITY</text></g><g fill="#C87533" font-family="Fraunces, serif" font-style="italic" font-size="26"><text x="538" y="68" text-anchor="middle">?</text><text x="558" y="108" text-anchor="middle">?</text><text x="518" y="148" text-anchor="middle">?</text></g></svg>',
+    diagramCaption: 'Architecture expansions, first prototype, customer interviews — all queued.',
     decisions: {
       label: 'Open work',
       items: [
+        '<strong>v0 vs v1 build decision:</strong> commit to the lean ₹80k / 15 kg prototype, or jump to the ₹4 L production-grade build?',
         '<strong>Architecture expansions:</strong> add <em>Vendor</em>, <em>Property administrator</em>, <em>Fleet operations</em>, <em>Regulator</em> as external entities',
         '<strong>Charging sub-system:</strong> unpack — dock, battery chemistry, swap vs charge-in-place',
         '<strong>Requirements v0 → v1:</strong> merge the 12 gap categories into the master list',
-        '<strong>Customer discovery:</strong> 15-20 interviews queued (private Bangalore campuses)',
-        '<strong>Hardware path:</strong> <em>deliberate non-decision</em> — source-and-customize vs design-ground-up, to be settled with evidence'
+        '<strong>Customer discovery:</strong> 15-20 interviews queued (private Bangalore campuses — Christ, PES, Jain, Reva, DSI)',
+        '<strong>Entity formation, equity split, hardware orders</strong> — all queued, none locked'
       ]
     },
     links: [
